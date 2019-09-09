@@ -23,6 +23,17 @@ def selection_sort( arr ):
 
 # TO-DO:  implement the Bubble Sort function below
 def bubble_sort( arr ):
+    swapping = 1
+    while swapping == 1:
+        swapping = 0
+        for i in range(0, len(arr) - 1):
+            if arr[i+1] < arr[i]:
+                swapping = 1
+                temp = arr[i]
+                arr[i] = arr[i+1]
+                arr[i+1] = temp
+
+
 
     return arr
 
@@ -30,4 +41,29 @@ def bubble_sort( arr ):
 # STRETCH: implement the Count Sort function below
 def count_sort( arr, maximum=-1 ):
 
-    return arr
+
+    #Find out maximum value
+    for element in arr:
+        if element < 0:
+            return "Error, negative numbers not allowed in Count Sort"
+        if maximum < element:
+            maximum = element
+    
+    #Create array of 0s to with maximum elements
+    count = [0 for i in range(maximum + 1)]
+    #tally up how many values are in each position in the array
+    for x in arr:
+        count[x] += 1
+
+
+    result = []
+    for i in range(len(count)):
+        while count[i] > 0:
+            result.append(i)
+            count[i] -= 1
+
+
+    
+
+
+    return result
